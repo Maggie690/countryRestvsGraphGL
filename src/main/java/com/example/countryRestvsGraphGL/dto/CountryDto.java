@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CountryDto {
     private Long id;
-    private char code;
+    private String code;
     private String name;
     private int phone;
     private String currencySymbol;
@@ -19,5 +19,5 @@ public class CountryDto {
     private String currency;
     private String continent;
     private String continentCode;
-    private String alpha3;
+    private String alpha_3;
 }

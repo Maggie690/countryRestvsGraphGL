@@ -8,13 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "countries")
+@Table(name = "country")
 public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private char code;
+    private String code;
     private String name;
     private int phone;
     private String currencySymbol;
@@ -22,6 +22,6 @@ public class Country {
     private String currency;
     private String continent;
     private String continentCode;
-    private String alpha3;
+    private String alpha_3;
 
 }
