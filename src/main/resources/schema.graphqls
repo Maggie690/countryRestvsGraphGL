@@ -1,0 +1,22 @@
+type Country {
+    id:ID!
+    code:String!
+    name:String!
+    phone:Int!
+    currencySymbol:String
+    capital:String
+    currency:String
+    continent:String
+    continentCode:String
+    alpha3:String
+}
+
+type Continent {
+    id:ID!
+    code:String!
+    name:String!
+}
+
+type Query {
+    countries:[Country]!
+}
