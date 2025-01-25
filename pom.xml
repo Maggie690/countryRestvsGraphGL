@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.numericaideas</groupId>
     <artifactId>docker-compose-springboot-mysql</artifactId>
@@ -25,18 +25,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-docker-compose</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.graphql/spring-graphql -->
         <dependency>
             <groupId>org.springframework.graphql</groupId>
             <artifactId>spring-graphql</artifactId>
-            <version>1.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>

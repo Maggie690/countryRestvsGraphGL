@@ -1,20 +1,7 @@
+
 -- All countries
 
-CREATE TABLE IF NOT EXISTS `countries` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `code` char(2) NOT NULL,
-    `name` varchar(100) NOT NULL,
-    `phone` int(5) NOT NULL,
-    `currency_symbol` varchar(10) DEFAULT NULL,
-    `capital` varchar(80) DEFAULT NULL,
-    `currency` varchar(3) DEFAULT NULL,
-    `continent` varchar(30) DEFAULT NULL,
-    `continent_code` varchar(2) DEFAULT NULL,
-    `alpha_3` char(3) DEFAULT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `countries` (`id`, `code`, `name`, `phone`, `currency_symbol`, `capital`, `currency`, `continent`, `continent_code`, `alpha_3`) VALUES
+INSERT INTO `country` (`id`, `code`, `name`, `phone`, `currency_symbol`, `capital`, `currency`, `continent`, `continent_code`, `alpha_3`) VALUES
 (1, 'AF', 'Afghanistan', 93, '؋', 'Kabul', 'AFN', 'Asia', 'AS', 'AFG'),
 (2, 'AX', 'Åland Islands', 358, '€', 'Mariehamn', 'EUR', 'Europe', 'EU', 'ALA'),
 (3, 'AL', 'Albania', 355, 'Lek', 'Tirana', 'ALL', 'Europe', 'EU', 'ALB'),
@@ -267,3 +254,14 @@ INSERT INTO `countries` (`id`, `code`, `name`, `phone`, `currency_symbol`, `capi
 (250, 'YE', 'Yemen', 967, '﷼', 'Sanaa', 'YER', 'Asia', 'AS', 'YEM'),
 (251, 'ZM', 'Zambia', 260, 'ZK', 'Lusaka', 'ZMW', 'Africa', 'AF', 'ZMB'),
 (252, 'ZW', 'Zimbabwe', 263, '$', 'Harare', 'ZWL', 'Africa', 'AF', 'ZWE');
+
+-- Continents
+
+INSERT INTO `continent` (`id`, `code`, `name`) VALUES
+(1, 'AF', 'Africa'),
+(2, 'AN', 'Antarctica'),
+(3, 'AS', 'Asia'),
+(4, 'EU', 'Europe'),
+(5, 'OC', 'Australia'),
+(6, 'NA', 'North America'),
+(7, 'SA', 'South America');

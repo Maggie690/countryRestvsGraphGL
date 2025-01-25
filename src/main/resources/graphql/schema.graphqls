@@ -8,7 +8,7 @@ type Country {
     currency:String
     continent:String
     continentCode:String
-    alpha3:String
+    alpha_3:String
 }
 
 type Continent {
