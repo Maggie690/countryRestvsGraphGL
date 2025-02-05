@@ -17,6 +17,25 @@ type Continent {
     name:String!
 }
 
+input CountryDto{
+    id:ID
+    code:String!
+    name:String!
+    phone:Int!
+    currencySymbol:String
+    capital:String
+    currency:String
+    continent:String
+    continentCode:String
+    alpha_3:String
+}
+
 type Query {
     countries:[Country]!
+    countryById(id: ID):Country
+}
+
+type Mutation{
+    addCountry(input:CountryDto):Country
+    updateCountry(input:CountryDto):Country
 }
