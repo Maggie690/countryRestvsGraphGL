@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CountryDto {
-    private Long id;
+    private Integer id;
     private String code;
     private String name;
     private int phone;

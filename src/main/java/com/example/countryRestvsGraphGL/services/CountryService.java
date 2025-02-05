@@ -28,19 +28,31 @@ public class CountryService {
                 .collect(Collectors.toList());
     }
 
-    public Country findById(Integer id) throws ResourceNotFoundException {
+    public CountryDto findById(Integer id) throws ResourceNotFoundException {
 
         return this.repository.findById(id)
+                .map(c -> mapper.convertValue(c, CountryDto.class))
                 .orElseThrow(() -> new ResourceNotFoundException("Country with id:" + id + " is not found"));
     }
 
-    public Country save(CountryDto countryDto) {
+    public CountryDto save(CountryDto countryDto) {
         var entity = mapper.convertValue(countryDto, Country.class);
-        return repository.save(entity);
+        var response = repository.save(entity);
+
+        return mapper.convertValue(response, CountryDto.class);
     }
 
-    public Country update(CountryDto countryDto) {
+    public CountryDto update(CountryDto countryDto) throws ResourceNotFoundException {
         var entity = mapper.convertValue(countryDto, Country.class);
-        return repository.save(entity);
+
+        findById(countryDto.getId());
+
+        var response = repository.save(entity);
+        return mapper.convertValue(response, CountryDto.class);
+    }
+
+    public void deleteById(Integer id) throws ResourceNotFoundException {
+        findById(id);
+        repository.deleteById(id);
     }
 }
