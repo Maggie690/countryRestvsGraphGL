@@ -3,7 +3,6 @@ package com.example.countryRestvsGraphGL.exceprions;
 import graphql.GraphQLError;
 import graphql.GraphqlErrorBuilder;
 import graphql.schema.DataFetchingEnvironment;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.graphql.execution.DataFetcherExceptionResolverAdapter;
 import org.springframework.graphql.execution.ErrorType;
@@ -24,6 +23,7 @@ public class ExceptionGlobalGraphQL extends DataFetcherExceptionResolverAdapter 
         return GraphqlErrorBuilder.newError(env)
                 .message(ex.getMessage())
                 .errorType(errorType)
+                .locations(null)
                 .build();
     }
 }
