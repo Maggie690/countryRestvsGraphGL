@@ -1,5 +1,6 @@
 package com.example.countryRestvsGraphGL.services;
 
+import com.example.countryRestvsGraphGL.exceprions.ResourceNotFoundException;
 import com.example.countryRestvsGraphGL.entiies.Country;
 import com.example.countryRestvsGraphGL.repositories.CountyRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,8 +28,10 @@ public class CountryService {
                 .collect(Collectors.toList());
     }
 
-    public Country findById(Integer id) {
-        return this.repository.getReferenceById(id);
+    public Country findById(Integer id) throws ResourceNotFoundException {
+
+        return this.repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Country with id:" + id + " is not found"));
     }
 
     public Country save(CountryDto countryDto) {

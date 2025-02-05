@@ -2,6 +2,7 @@ package com.example.countryRestvsGraphGL.controller;
 
 import com.example.countryRestvsGraphGL.dto.CountryDto;
 import com.example.countryRestvsGraphGL.entiies.Country;
+import com.example.countryRestvsGraphGL.exceprions.ResourceNotFoundException;
 import com.example.countryRestvsGraphGL.services.CountryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class CountryGraphQLController {
     }
 
     @QueryMapping
-    public Country countryById(@Argument(name = "id") Integer id) {
+    public Country countryById(@Argument(name = "id") Integer id) throws ResourceNotFoundException {
         return service.findById(id);
     }
 
