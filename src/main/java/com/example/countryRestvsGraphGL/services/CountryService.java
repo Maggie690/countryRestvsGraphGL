@@ -45,7 +45,7 @@ public class CountryService {
     public CountryDto update(CountryDto countryDto) throws ResourceNotFoundException {
         var entity = mapper.convertValue(countryDto, Country.class);
 
-        findById(countryDto.getId());
+        findById(countryDto.getCountryId());
 
         var response = repository.save(entity);
         return mapper.convertValue(response, CountryDto.class);
