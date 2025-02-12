@@ -1,4 +1,4 @@
-package com.example.countryRestvsGraphGL.controller;
+package com.example.countryRestvsGraphGL.controller.rest;
 
 import com.example.countryRestvsGraphGL.dto.CountryDto;
 import com.example.countryRestvsGraphGL.exceprions.ResourceNotFoundException;
@@ -37,7 +37,7 @@ public class CountryRestController {
         return this.countryService.update(countryDto);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void deleteCountry(@PathVariable Integer id) throws ResourceNotFoundException {
         this.countryService.deleteById(id);
     }
