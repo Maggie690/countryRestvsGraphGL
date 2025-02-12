@@ -29,7 +29,6 @@ public class CountryService {
     }
 
     public CountryDto findById(Integer id) throws ResourceNotFoundException {
-
         return this.repository.findById(id)
                 .map(c -> mapper.convertValue(c, CountryDto.class))
                 .orElseThrow(() -> new ResourceNotFoundException("Country with id:" + id + " is not found"));

@@ -5,6 +5,8 @@ import com.example.countryRestvsGraphGL.exceprions.ResourceNotFoundException;
 import com.example.countryRestvsGraphGL.services.CountryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,22 +25,27 @@ public class CountryRestController {
     }
 
     @GetMapping("/{id}")
-    public CountryDto findById(@PathVariable Integer id) throws ResourceNotFoundException {
-        return this.countryService.findById(id);
+    public ResponseEntity<CountryDto> findById(@PathVariable Integer id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(this.countryService.findById(id));
     }
 
     @PostMapping
-    public CountryDto createCountry(@RequestBody CountryDto countryDto) {
-        return this.countryService.save(countryDto);
+    public ResponseEntity<CountryDto> createCountry(@RequestBody CountryDto countryDto) {
+        return ResponseEntity.ok(this.countryService.save(countryDto));
     }
 
     @PutMapping
-    public CountryDto updateCountry(@RequestBody CountryDto countryDto) throws ResourceNotFoundException {
-        return this.countryService.update(countryDto);
+    public ResponseEntity<CountryDto> updateCountry(@RequestBody CountryDto countryDto) throws ResourceNotFoundException {
+        return ResponseEntity.ok(this.countryService.update(countryDto));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCountry(@PathVariable Integer id) throws ResourceNotFoundException {
-        this.countryService.deleteById(id);
+    public ResponseEntity<Void> deleteCountry(@PathVariable Integer id) {
+        try {
+            this.countryService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (ResourceNotFoundException ex) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 }
